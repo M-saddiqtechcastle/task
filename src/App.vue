@@ -1,11 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
   <router-view/>
 </template>
 
+<script setup>
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router'
+import { useStore } from "vuex";
+const router = useRouter()
+const store = useStore();
+
+onMounted(()=>{
+  if(store.state.adminAuth.access_token == null){
+    router.push({path:'/'})
+  }
+})
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

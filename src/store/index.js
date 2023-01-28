@@ -1,14 +1,11 @@
 import { createStore } from 'vuex'
-
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
+import todolist from '../module/todolist'
+import adminAuth from '@/module/adminAuth/adminAuth.js';
+const store =  createStore({
+  modules:{
+    todolist,
+    adminAuth
   }
 })
+
+export default store;
